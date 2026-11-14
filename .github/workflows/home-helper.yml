@@ -27,7 +27,7 @@ jobs:
       - name: Package unsigned helper
         run: |
           app='build/Build/Products/Release-maccatalyst/iMCP Helper.app'
-          lipo -verify_arch x86_64 "$app/Contents/MacOS/iMCP Helper"
+          lipo "$app/Contents/MacOS/iMCP Helper" -verify_arch x86_64
           mkdir -p dist
           ditto -c -k --keepParent "$app" dist/imcp-home-helper-intel-unsigned.zip
           shasum -a 256 dist/*.zip > dist/SHA256SUMS
